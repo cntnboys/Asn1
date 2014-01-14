@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +16,8 @@ import android.widget.ListView;
 
 public class Main extends Activity {
 
-
+	public final static String Id_Extra="com.example.counter._ID";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,6 +36,9 @@ public class Main extends Activity {
 		
 		myListView.setAdapter(aa);
 		
+		myListView.setOnItemClickListener(onListClick);
+		
+		//Button
 		Button btnSimple = (Button) findViewById(R.id.button1);
 		
 		btnSimple.setOnClickListener(new View.OnClickListener() {
@@ -45,9 +50,16 @@ public class Main extends Activity {
 				aa.notifyDataSetChanged();
 				myEditText.setText("");
 		      }
-	   });	
+	   });
+		
 			
 	}
+	
+	private AdapterView.OnItemClickListener onListClick = new Adapterview.OnItemClickListener(){
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+			Intent i=new Intent(Main,this, Avtivity2.class);
 			
-		
+		}
+	}
+	
 }
