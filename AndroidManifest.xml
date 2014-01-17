@@ -34,6 +34,10 @@
             android:name="com.example.counter.SingleListItem"
             android:label="@string/title_activity_single_list_item" >
         </activity>
+        <activity
+            android:name="com.example.counter.MainCounter"
+            android:label="@string/title_activity_main_counter" >
+        </activity>
     </application>
 
 </manifest>

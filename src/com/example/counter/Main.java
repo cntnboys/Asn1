@@ -3,6 +3,7 @@ package com.example.counter;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,14 +38,30 @@ public class Main extends Activity {
 		myListView.setAdapter(aa);
 	
 
-      //  myListview.setOnItemClickListener(new OnItemClickListener() {
-		//	@Override
-			//public void onItemClick(AdapterView arg0, View view,
-              //                             int position, long id) {
-				// user clicked a list item, make it "selected"
-			//	selectedAdapter.setSelectedPosition(position);
-		//	}
-        //});
+		// list item click 
+	   //  myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+	     //               @Override
+	      //              public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+	                        // TODO Auto-generated method stub
+
+
+
+	        //Intent myIntent = new Intent(this, abc.class); 
+	                    
+	     // here arg2 is argument of onitemclick method
+	     // this will pick the same item from array list that is clicked on list view 
+	      //               i.putExtra("key_name" , Id.get(arg2));
+	      //               i.putExtra("key_name" , Name.get(arg2));
+	      //               i.putExtra("key_name" , Gender.get(arg2));
+
+	          //           startActivity(i);       
+
+
+	            //         }
+
+	              //   });
+
 		
 		//Button
 		Button btnSimple = (Button) findViewById(R.id.button1);
