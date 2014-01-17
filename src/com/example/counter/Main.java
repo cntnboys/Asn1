@@ -12,13 +12,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 
 
 public class Main extends Activity {
 
-
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,29 +41,17 @@ public class Main extends Activity {
 		myListView.setAdapter(aa);
 	
 
-		// list item click 
-	   //  myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		 //list item click 
+	     myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+	    	 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	               // When clicked, show a toast with the TextView text Game, Help, Home
+	               Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();          
+	               Intent intent = null;
+	               intent = new Intent(getBaseContext(),MainCounter.class);
+	               startActivity(intent);   
+	    	 }
 
-	     //               @Override
-	      //              public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-	                        // TODO Auto-generated method stub
-
-
-
-	        //Intent myIntent = new Intent(this, abc.class); 
-	                    
-	     // here arg2 is argument of onitemclick method
-	     // this will pick the same item from array list that is clicked on list view 
-	      //               i.putExtra("key_name" , Id.get(arg2));
-	      //               i.putExtra("key_name" , Name.get(arg2));
-	      //               i.putExtra("key_name" , Gender.get(arg2));
-
-	          //           startActivity(i);       
-
-
-	            //         }
-
-	              //   });
+	     });
 
 		
 		//Button
