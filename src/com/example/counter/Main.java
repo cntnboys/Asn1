@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,8 +17,7 @@ import android.widget.ListView;
 
 public class Main extends Activity {
 
-	public final static String Id_Extra="com.example.counter._ID";
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,7 +27,7 @@ public class Main extends Activity {
 		ListView myListView = (ListView)findViewById(R.id.counterlist);
 		
 		final EditText myEditText = (EditText)findViewById(R.id.countertext);
-		
+
 		final ArrayList<String> noteList = new ArrayList<String>();
 		
 		final ArrayAdapter<String> aa;
@@ -35,8 +35,16 @@ public class Main extends Activity {
 		aa = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,noteList);
 		
 		myListView.setAdapter(aa);
-		
-		myListView.setOnItemClickListener(onListClick);
+	
+
+      //  myListview.setOnItemClickListener(new OnItemClickListener() {
+		//	@Override
+			//public void onItemClick(AdapterView arg0, View view,
+              //                             int position, long id) {
+				// user clicked a list item, make it "selected"
+			//	selectedAdapter.setSelectedPosition(position);
+		//	}
+        //});
 		
 		//Button
 		Button btnSimple = (Button) findViewById(R.id.button1);
@@ -54,12 +62,7 @@ public class Main extends Activity {
 		
 			
 	}
+
 	
-	private AdapterView.OnItemClickListener onListClick = new Adapterview.OnItemClickListener(){
-		public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-			Intent i=new Intent(Main,this, Avtivity2.class);
-			
-		}
-	}
 	
 }
