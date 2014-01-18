@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,7 +19,7 @@ import android.widget.Toast;
 
 public class Main extends Activity {
 
-	
+	final ArrayList<String> noteList = new ArrayList<String>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +31,16 @@ public class Main extends Activity {
 		
 		final EditText myEditText = (EditText)findViewById(R.id.countertext);
 
-		final ArrayList<String> noteList = new ArrayList<String>();
-		
 		final ArrayAdapter<String> aa;
+		
 		
 		aa = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,noteList);
 		
 		myListView.setAdapter(aa);
 	
 
+		
+		//http://android.okhelp.cz/start-activity-from-listview-item-click-android-example/
 		 //list item click 
 	     myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 	    	 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

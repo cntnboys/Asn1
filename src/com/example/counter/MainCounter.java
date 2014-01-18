@@ -21,6 +21,8 @@ public class MainCounter extends Activity {
 		
 		
 		
+		
+		
 		//Button
 		Button btnSimple2 = (Button) findViewById(R.id.button2);
 		text = (TextView) findViewById(R.id.text1);
@@ -29,7 +31,8 @@ public class MainCounter extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				text.setText("You clicked the button" + count);
+				count = count + 1;
+				text.setText(""+count);
 				
 				
 		      }
