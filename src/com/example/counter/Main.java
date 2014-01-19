@@ -20,8 +20,8 @@ import android.widget.Toast;
 public class Main extends Activity {
 
 	final ArrayList<String> noteList = new ArrayList<String>();
+	String selected = null;
 	
-	protected final static String ID_EXTRA="com.example.counter._ID";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class Main extends Activity {
 		setContentView(R.layout.main);
 		
 		//  List view element
-		ListView myListView = (ListView)findViewById(R.id.counterlist);
+		final ListView myListView = (ListView)findViewById(R.id.counterlist);
 		
 		final EditText myEditText = (EditText)findViewById(R.id.countertext);
 
@@ -46,11 +46,15 @@ public class Main extends Activity {
 	     myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 	    	 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 	               // When clicked, show a toast with the TextView text Game, Help, Home
-	               Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();          
-	               Intent intent = null;
-	               intent = new Intent(getBaseContext(),MainCounter.class);
+	               Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();  
+	              
+	               String selectedFromList =(String) (myListView.getItemAtPosition(position));
+
+	               Intent intent = new Intent(Main.this,MainCounter.class);
+	              
 	               
-	               intent.putExtra("ID_EXTRA", String.valueOf(id));
+	               
+	               intent.putExtra("selected1", selectedFromList);
 	               
 	               startActivity(intent);   
 	    	 }

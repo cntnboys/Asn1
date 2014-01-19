@@ -14,10 +14,24 @@ public class MainCounter extends Activity {
 	int count = 0;
 	TextView text;
 	
+	//passed variable from Main
+	protected String passedVar = null;
+	private TextView passedView=null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_counter);
+		
+		
+		
+		//get passed variable
+		passedVar = getIntent().getStringExtra("selected1");
+		
+		//textview
+		passedView =(TextView)findViewById(R.id.passed);
+		
+		passedView.setText("you clicked"+ passedVar);
 		
 		
 		
