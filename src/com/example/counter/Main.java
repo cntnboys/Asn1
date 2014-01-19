@@ -21,6 +21,8 @@ public class Main extends Activity {
 
 	final ArrayList<String> noteList = new ArrayList<String>();
 	
+	protected final static String ID_EXTRA="com.example.counter._ID";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,8 +34,7 @@ public class Main extends Activity {
 		final EditText myEditText = (EditText)findViewById(R.id.countertext);
 
 		final ArrayAdapter<String> aa;
-		
-		
+
 		aa = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,noteList);
 		
 		myListView.setAdapter(aa);
@@ -48,6 +49,9 @@ public class Main extends Activity {
 	               Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();          
 	               Intent intent = null;
 	               intent = new Intent(getBaseContext(),MainCounter.class);
+	               
+	               intent.putExtra("ID_EXTRA", String.valueOf(id));
+	               
 	               startActivity(intent);   
 	    	 }
 
