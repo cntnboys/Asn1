@@ -8,30 +8,27 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainCounter" >
 
-    <Button
-        android:id="@+id/button2"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
-        android:text="Button" />
-
     <EditText
         android:id="@+id/passed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:ems="10" >
+        android:ems="10" 
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false" 
+        android:inputType="textNoSuggestions">
+         <!--http://stackoverflow.com/questions/9011944/android-ice-cream-sandwich-edittext-disabling-spell-check-and-word-wrap-->
+        
 
         <requestFocus />
     </EditText>
 
     <EditText
         android:id="@+id/text1"
-        android:layout_width="wrap_content"
+        android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/passed"
         android:layout_below="@+id/passed"
@@ -40,5 +37,23 @@
         android:ems="10"
         android:focusable="false"
         android:focusableInTouchMode="false" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Reset" />
+
+    <Button
+        android:id="@+id/button2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:text="Add" />
 
 </RelativeLayout>

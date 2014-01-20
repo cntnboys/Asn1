@@ -22,11 +22,21 @@ public class Main extends Activity {
 	final ArrayList<String> noteList = new ArrayList<String>();
 	String selected = null;
 	
+	TextView Intro;
+	TextView Yourcounter;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
+		//set intro message
+		Intro = (TextView) findViewById(R.id.introText);
+		Intro.setText("Enter a name, press + to add counter");
+		
+		Yourcounter = (TextView) findViewById(R.id.yourcounters);
+		Yourcounter.setText("Your Counters");
 		
 		//  List view element
 		final ListView myListView = (ListView)findViewById(R.id.counterlist);
@@ -45,14 +55,19 @@ public class Main extends Activity {
 		 //list item click 
 	     myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 	    	 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	    		 
+	    		   
+	    		 
+	    		 
 	               // When clicked, show a toast with the TextView text Game, Help, Home
 	               Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();  
 	              
+	               
+	              // http://stackoverflow.com/questions/801193/modify-view-static-variables-while-debugging-in-eclipse
 	               String selectedFromList =(String) (myListView.getItemAtPosition(position));
 
-	               Intent intent = new Intent(Main.this,MainCounter.class);
-	              
 	               
+	               Intent intent = new Intent(Main.this,MainCounter.class);
 	               
 	               intent.putExtra("selected1", selectedFromList);
 	               
@@ -60,7 +75,6 @@ public class Main extends Activity {
 	    	 }
 
 	     });
-
 		
 		//Button
 		Button btnSimple = (Button) findViewById(R.id.button1);
@@ -73,12 +87,9 @@ public class Main extends Activity {
 				noteList.add(0, myEditText.getText().toString());
 				aa.notifyDataSetChanged();
 				myEditText.setText("");
-		      }
+		   }
 	   });
-		
 			
 	}
-
-	
 	
 }
