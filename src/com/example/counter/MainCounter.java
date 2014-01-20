@@ -25,10 +25,7 @@ public class MainCounter extends Activity {
 		//get passed variable
 		//http://www.youtube.com/watch?v=XPKb_JqeTp8
 		passedVar = getIntent().getStringExtra("selected1");
-		
-		//textview
 		passedView =(TextView)findViewById(R.id.passed);
-		
 		passedView.setText("Counter: "+ passedVar);
 		
 		//Button increment count
@@ -56,6 +53,19 @@ public class MainCounter extends Activity {
 						// TODO Auto-generated method stub
 						count = 0;
 						text.setText(""+count);
+						
+						
+				      }
+			   });
+		 
+		//Button 4 Back button. Finishes current activity
+	     Button btnSimple4 = (Button) findViewById(R.id.backbutton);
+		 btnSimple4.setOnClickListener(new View.OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						finish();
 						
 						
 				      }

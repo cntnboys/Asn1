@@ -8,42 +8,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainCounter" >
 
-    <EditText
-        android:id="@+id/passed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:ems="10" 
-        android:clickable="false"
-        android:cursorVisible="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false" 
-        android:inputType="textNoSuggestions">
-         <!--http://stackoverflow.com/questions/9011944/android-ice-cream-sandwich-edittext-disabling-spell-check-and-word-wrap-->
-        
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/text1"
-        android:layout_width="75dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/passed"
-        android:layout_below="@+id/passed"
-        android:clickable="false"
-        android:cursorVisible="false"
-        android:ems="10"
-        android:focusable="false"
-        android:focusableInTouchMode="false" />
-
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="69dp"
         android:text="Reset" />
 
     <Button
@@ -53,7 +24,42 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/button3"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         android:text="Add" />
+
+    <EditText
+        android:id="@+id/text1"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="33dp"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
+
+    <EditText
+        android:id="@+id/passed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/text1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:inputType="textNoSuggestions" />
+
+    <Button
+        android:id="@+id/backbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Back" />
 
 </RelativeLayout>
