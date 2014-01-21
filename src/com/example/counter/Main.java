@@ -7,8 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
@@ -35,7 +33,7 @@ public class Main extends Activity {
 	TextView Yourcounter;
 	
 	
-	private static final String FILENAME = "file3.sav";
+	private static final String FILENAME = "file4.sav";
 	private ListView myListview;
 	private EditText myEditText;
 	
@@ -78,12 +76,8 @@ public class Main extends Activity {
 	               
 	              // http://stackoverflow.com/questions/801193/modify-view-static-variables-while-debugging-in-eclipse
 	               String selectedFromList =(String) (myListview.getItemAtPosition(position));
-
-	               
 	               Intent intent = new Intent(Main.this,MainCounter.class);
-	               
 	               intent.putExtra("selected1", selectedFromList);
-	               
 	               startActivity(intent);   
 	    	 }
 
@@ -103,7 +97,10 @@ public class Main extends Activity {
 				setResult(RESULT_OK);
 				String text = myEditText.getText().toString();
 				saveInFile(text+"\n");
-				
+				onStart();
+				////Intent intent = getIntent();
+			    //finish();
+			    //startActivity(intent);
 		   }
 	   });
 			
@@ -135,6 +132,7 @@ public class Main extends Activity {
 				tweets.add(line);
 				//System.out.println(tweets);
 				line = in.readLine();
+				//System.out.println(line);
 			}
 			//System.out.println(tweets);
 		} catch (FileNotFoundException e) {

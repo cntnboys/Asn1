@@ -15,7 +15,9 @@ public class MainCounter extends Activity {
 	
 	//passed variable from Main
 	protected String passedVar = null;
+	//protected String passedVar2 = null;
 	private TextView passedView=null;
+	//private TextView passedView2=null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +26,13 @@ public class MainCounter extends Activity {
 		
 		//get passed variable
 		//http://www.youtube.com/watch?v=XPKb_JqeTp8
+		
+		
+		
 		passedVar = getIntent().getStringExtra("selected1");
 		passedView =(TextView)findViewById(R.id.passed);
-		passedView.setText("Counter: "+ passedVar);
+		passedView.setText(passedVar);
+		
 		
 		//Button increment count
 		Button btnSimple2 = (Button) findViewById(R.id.button2);
