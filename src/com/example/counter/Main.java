@@ -89,10 +89,6 @@ public class Main extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				//noteList.add(0, myEditText.getText().toString());
-				//aa.notifyDataSetChanged();
-				//myEditText.setText("");
 				
 				setResult(RESULT_OK);
 				String text = myEditText.getText().toString();
@@ -122,6 +118,9 @@ public class Main extends Activity {
 		
 	}
 
+	
+	
+	//Used from Lonely Twitter and modified accordingly
 	private List<String> loadFromFile() {
 		
 		List<String> tweets = new ArrayList<String>();
