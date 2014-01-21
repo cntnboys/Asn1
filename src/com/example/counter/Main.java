@@ -97,6 +97,8 @@ public class Main extends Activity {
 				setResult(RESULT_OK);
 				String text = myEditText.getText().toString();
 				saveInFile(text+"\n");
+				//passedView.setText(passedVar);
+				myEditText.setText("");
 				onStart();
 				////Intent intent = getIntent();
 			    //finish();
