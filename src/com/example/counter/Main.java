@@ -27,7 +27,7 @@ import android.widget.Toast;
 
 public class Main extends Activity {
 
-	ArrayList<String> noteList = new ArrayList<String>();
+	List<String> noteList = new ArrayList<String>();
 	String selected = null;
 	TextView Intro;
 	TextView Yourcounter;
@@ -53,22 +53,11 @@ public class Main extends Activity {
 		//  List view element
 	    myListview = (ListView)findViewById(R.id.counterlist);
 		myEditText = (EditText)findViewById(R.id.countertext);
-
-		//final ArrayAdapter<String> aa;
-
-		//aa = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,noteList);
-		
-		//myListView.setAdapter(aa);
 	
-
-		
 		//http://android.okhelp.cz/start-activity-from-listview-item-click-android-example/
 		 //list item click 
 	     myListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 	    	 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-	    		 
-	    		   
-	    		 
 	    		 
 	               // When clicked, show a toast with the TextView text Game, Help, Home
 	               Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();  
@@ -92,11 +81,19 @@ public class Main extends Activity {
 				
 				setResult(RESULT_OK);
 				String text = myEditText.getText().toString();
-				System.out.println(text);
+				System.out.println(noteList);
+				
 				
 				if(text.equals("")){
 					return;
 				}
+				
+				if(noteList.contains(text)){
+					System.out.println("Cannot add already exists");
+					return;
+					
+				}
+			
 				else{
 				saveInFile(text+"\n");
 				//passedView.setText(passedVar);
@@ -117,8 +114,9 @@ public class Main extends Activity {
 		// TODO Auto-generated method stub
 		super.onStart();
 		List<String> tweets = loadFromFile();
+		noteList = tweets;
 		
-		System.out.println(tweets);
+		//System.out.println(tweets);
 		
 		ArrayAdapter<String> aa = new ArrayAdapter<String>(this,
 				R.layout.list_item, tweets);
@@ -138,9 +136,12 @@ public class Main extends Activity {
 			BufferedReader in = new BufferedReader(new InputStreamReader(fis));
 			String line = in.readLine();
 			while (line != null) {
+				if (!line.equals("")) // don't write out blank lines
+			    {
 				tweets.add(line);
-				//System.out.println(tweets);
+			    }
 				line = in.readLine();
+			
 				//System.out.println(line);
 			}
 			//System.out.println(tweets);
