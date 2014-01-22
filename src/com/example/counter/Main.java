@@ -80,7 +80,9 @@ public class Main extends Activity {
 			public void onClick(View v) {
 				
 				setResult(RESULT_OK);
-				String text = myEditText.getText().toString();
+				String text = myEditText.getText().toString().trim();
+
+;
 				System.out.println(noteList);
 				
 				
@@ -89,7 +91,9 @@ public class Main extends Activity {
 				}
 				
 				if(noteList.contains(text)){
-					System.out.println("Cannot add already exists");
+					//http://stackoverflow.com/questions/3500197/how-to-display-toast-in-android
+					Toast.makeText(getApplicationContext(), "Counter already exists",
+							   Toast.LENGTH_LONG).show();
 					return;
 					
 				}
