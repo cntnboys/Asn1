@@ -98,6 +98,8 @@ public class MainCounter extends Activity {
 			delete();
 			
 			
+			
+			
 				
 			
 		}

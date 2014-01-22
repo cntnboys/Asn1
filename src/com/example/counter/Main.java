@@ -87,6 +87,8 @@ public class Main extends Activity {
 				
 				
 				if(text.equals("")){
+					Toast.makeText(getApplicationContext(), "Please Enter a name",
+							   Toast.LENGTH_LONG).show();
 					return;
 				}
 				
