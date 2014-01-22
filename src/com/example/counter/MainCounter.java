@@ -98,8 +98,6 @@ public class MainCounter extends Activity {
 			delete();
 			
 			
-			
-			
 				
 			
 		}
@@ -169,11 +167,6 @@ public class MainCounter extends Activity {
 			file.delete();
 			temp.renameTo(file);	
 	}
-	
-	
-	
-	
-	
 	
 	
 }

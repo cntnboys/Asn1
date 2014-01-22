@@ -36,6 +36,7 @@ public class Main extends Activity {
 	private static final String FILENAME = "file4.sav";
 	private ListView myListview;
 	private EditText myEditText;
+	private ArrayAdapter<String> aa = null; 
 	
 	
 	@Override
@@ -101,10 +102,16 @@ public class Main extends Activity {
 				}
 			
 				else{
+					
 				saveInFile(text+"\n");
+				noteList.add(text);
+				aa.notifyDataSetChanged();
 				//passedView.setText(passedVar);
 				myEditText.setText("");
-				onStart();
+				
+				
+				
+				//onStart();
 				}
 				////Intent intent = getIntent();
 			    //finish();
@@ -124,7 +131,7 @@ public class Main extends Activity {
 		
 		//System.out.println(tweets);
 		
-		ArrayAdapter<String> aa = new ArrayAdapter<String>(this,
+		 aa = new ArrayAdapter<String>(this,
 				R.layout.list_item, tweets);
 		myListview.setAdapter(aa);
 		
