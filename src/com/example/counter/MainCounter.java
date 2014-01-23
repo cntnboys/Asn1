@@ -10,8 +10,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.Gson;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.ContextWrapper;
 import android.os.Bundle;
 import android.view.View;
@@ -23,27 +28,30 @@ public class MainCounter extends Activity {
 	int count = 0;
 	TextView text;
     final String FILENAME = "file4.sav";
-	
-	
-	
+    
+    //testfilename for saving objects
+    final String FILENAME2 = "counter.sav";
+    
 	
 	//passed variable from Main
 	protected String passedVar = null;
-	//protected String passedVar2 = null;
 	private TextView passedView=null;
-	//private TextView passedView2=null;
+	List<Object> List2 = new ArrayList<Object>();
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_counter);
 		
-		//get passed variable
 		//http://www.youtube.com/watch?v=XPKb_JqeTp8
-		
 		passedVar = getIntent().getStringExtra("selected1");
 		passedView =(TextView)findViewById(R.id.passed);
 		passedView.setText(passedVar);
+		
+		
+		
+		
 		
 		
 		//Button increment count
@@ -62,6 +70,9 @@ public class MainCounter extends Activity {
 		      }
 	   });
 		
+		
+		
+		
 		//Button 3 reset
 	     Button btnSimple3 = (Button) findViewById(R.id.button3);
 		 btnSimple3.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +87,10 @@ public class MainCounter extends Activity {
 				      }
 			   });
 		 
+		 
+		 
+		 
+		 
 		//Button 4 Back button. Finishes current activity
 	     Button btnSimple4 = (Button) findViewById(R.id.backbutton);
 		 btnSimple4.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +104,11 @@ public class MainCounter extends Activity {
 				      }
 			   });
 		 
+		 
+		 
+		 
+		 
+		 
 		//Button 5 Back button. Finishes current activity
 	     Button btnSimple5 = (Button) findViewById(R.id.delete);	
          btnSimple5.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +116,7 @@ public class MainCounter extends Activity {
 		public void onClick(View v) {
 			
 			delete();
+			finish();
 			
 			
 				
@@ -103,7 +124,97 @@ public class MainCounter extends Activity {
 		}
 			
        });   
+	}
+	
+	
+	@Override
+    protected void onStart() {
+            // TODO Auto-generated method stub
+            super.onStart();
+            List<Object> tweets = (List<Object>) loadFromFile();
+            List2=tweets;
+            System.out.println(tweets);
     }
+	
+	
+	
+	@Override
+	public void onPause() {
+	    super.onPause();  // Always call the superclass method first
+	    
+	    setResult(RESULT_OK);
+	    String text = passedVar;
+        //saveInFile(text, new Date(System.currentTimeMillis()));
+        
+        CounterModel obj = new CounterModel(text);
+        obj.setText(text);
+        obj.setCount(count);
+      //  obj.setTimestamp(new Date(System.currentTimeMillis()));
+        Gson gson = new Gson();
+        String json = gson.toJson(obj);
+        saveInFile(json);
+
+	    
+	    }
+	
+	
+	
+	private List<Object> loadFromFile() {
+        List<Object> tweets = new ArrayList<Object>();
+         List2 = tweets;
+        //LonelyTweetModel simpleClass = null;
+        try {
+                FileInputStream fis = openFileInput(FILENAME2);
+                //BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+                Gson gson = new Gson();
+                tweets.add(gson.fromJson(new InputStreamReader(fis), CounterModel.class).toString());
+                tweets.add(gson.fromJson(new InputStreamReader(fis), CounterModel.class).getCount());
+                
+                /*
+                String line = in.readLine();
+                while (line != null) {
+                        tweets.add(line);
+                        line = in.readLine();
+                }
+                
+                */
+
+        } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+        } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+        }
+        return (List<Object>) tweets;
+        //return ;
+}
+
+
+
+
+private void saveInFile(String text) {
+        try {
+                FileOutputStream fos = openFileOutput(FILENAME2,
+                                Context.MODE_PRIVATE);
+
+                //fos.write(new String(date.toString() + " | " + text).getBytes());
+                fos.write(text.getBytes());
+                fos.close();
+                //fos.close();
+        } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+        } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+        }
+}
+	
+	
+	
+	
+	
 	
 	
 	
@@ -168,5 +279,5 @@ public class MainCounter extends Activity {
 			temp.renameTo(file);	
 	}
 	
-	
+			
 }
