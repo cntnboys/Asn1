@@ -27,5 +27,6 @@ public class CounterModel {
 	public String toString(){
         return getText();
     }
+	
 
 }

@@ -109,13 +109,8 @@ public class Main extends Activity {
 				//passedView.setText(passedVar);
 				myEditText.setText("");
 				
-				
-				
-				//onStart();
+			
 				}
-				////Intent intent = getIntent();
-			    //finish();
-			    //startActivity(intent);
 				
 		   }
 	   });

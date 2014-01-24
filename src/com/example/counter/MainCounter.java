@@ -10,10 +10,15 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 import android.app.Activity;
 import android.content.Context;
@@ -30,13 +35,17 @@ public class MainCounter extends Activity {
     final String FILENAME = "file4.sav";
     
     //testfilename for saving objects
-    final String FILENAME2 = "counter.sav";
+    final String FILENAME2 = "counter2.sav";
+    
+    
+    List<CounterModel> objList = new ArrayList<CounterModel>();
     
 	
 	//passed variable from Main
 	protected String passedVar = null;
 	private TextView passedView=null;
-	List<Object> List2 = new ArrayList<Object>();
+	List<CounterModel> List2 = new ArrayList<CounterModel>();
+	List<CounterModel> inpList = new ArrayList<CounterModel>();
 	
 	
 	@Override
@@ -46,8 +55,8 @@ public class MainCounter extends Activity {
 		
 		//http://www.youtube.com/watch?v=XPKb_JqeTp8
 		passedVar = getIntent().getStringExtra("selected1");
-		passedView =(TextView)findViewById(R.id.passed);
-		passedView.setText(passedVar);
+		//passedView =(TextView)findViewById(R.id.passed);
+		//passedView.setText(passedVar);
 		
 		
 		
@@ -109,7 +118,7 @@ public class MainCounter extends Activity {
 		 
 		 
 		 
-		//Button 5 Back button. Finishes current activity
+		 //Button 5 Back button. Finishes current activity
 	     Button btnSimple5 = (Button) findViewById(R.id.delete);	
          btnSimple5.setOnClickListener(new View.OnClickListener() {
 		
@@ -117,24 +126,14 @@ public class MainCounter extends Activity {
 			
 			delete();
 			finish();
-			
-			
-				
-			
+
 		}
 			
        });   
 	}
 	
 	
-	@Override
-    protected void onStart() {
-            // TODO Auto-generated method stub
-            super.onStart();
-            List<Object> tweets = (List<Object>) loadFromFile();
-            List2=tweets;
-            System.out.println(tweets);
-    }
+	
 	
 	
 	
@@ -144,72 +143,45 @@ public class MainCounter extends Activity {
 	    
 	    setResult(RESULT_OK);
 	    String text = passedVar;
-        //saveInFile(text, new Date(System.currentTimeMillis()));
+
+       
+        objList.add(new CounterModel(text));
         
-        CounterModel obj = new CounterModel(text);
-        obj.setText(text);
-        obj.setCount(count);
-      //  obj.setTimestamp(new Date(System.currentTimeMillis()));
+        System.out.println("here"+objList);
+       
         Gson gson = new Gson();
-        String json = gson.toJson(obj);
-        saveInFile(json);
-
+        String json = gson.toJson(objList);
+        
+        Context context1 = getApplication();
+        LoadSave ls = new LoadSave();
+        ls.saveInFile(json,context1,FILENAME2);
+        
+        }
 	    
-	    }
+	    
+	@Override
+    protected void onStart() {
+            // TODO Auto-generated method stub
+            super.onStart();
+            //list of counter models
+            Context context2 = getApplication();
+            LoadSave ld = new LoadSave();
+            List<CounterModel> List2 = ld.loadFromFile(FILENAME2,objList,context2);
+            System.out.println("List2"+List2); 
+            
+            //loop through counter objects
+            for(int i=0;i<List2.size();i++){
+            	
+            	CounterModel cam2 = List2.get(i);
+            	cam2.getText().toString();
+            	System.out.println(cam2);
+            	
+            }
+    }
 	
 	
 	
-	private List<Object> loadFromFile() {
-        List<Object> tweets = new ArrayList<Object>();
-         List2 = tweets;
-        //LonelyTweetModel simpleClass = null;
-        try {
-                FileInputStream fis = openFileInput(FILENAME2);
-                //BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-                Gson gson = new Gson();
-                tweets.add(gson.fromJson(new InputStreamReader(fis), CounterModel.class).toString());
-                tweets.add(gson.fromJson(new InputStreamReader(fis), CounterModel.class).getCount());
-                
-                /*
-                String line = in.readLine();
-                while (line != null) {
-                        tweets.add(line);
-                        line = in.readLine();
-                }
-                
-                */
-
-        } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-        } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-        }
-        return (List<Object>) tweets;
-        //return ;
-}
-
-
-
-
-private void saveInFile(String text) {
-        try {
-                FileOutputStream fos = openFileOutput(FILENAME2,
-                                Context.MODE_PRIVATE);
-
-                //fos.write(new String(date.toString() + " | " + text).getBytes());
-                fos.write(text.getBytes());
-                fos.close();
-                //fos.close();
-        } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-        } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-        }
-}
+	
 	
 	
 	
