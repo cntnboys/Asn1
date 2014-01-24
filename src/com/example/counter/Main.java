@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -81,7 +83,7 @@ public class Main extends Activity {
 
 	     });
 		
-		//Button
+		//Button plus sign
 		Button btnSimple = (Button) findViewById(R.id.button1);
 		btnSimple.setOnClickListener(new View.OnClickListener() {
 			
@@ -113,10 +115,25 @@ public class Main extends Activity {
 					
 				//saveInFile(text+"\n");
 				//noteList.add(text);
-				aa.notifyDataSetChanged();
-				//passedView.setText(passedVar);
-				myEditText.setText("");
 				
+				//passedView.setText(passedVar);
+				//myEditText.setText("");
+					
+				setResult(RESULT_OK);
+			    List2.add(new CounterModel(text));
+			        
+			    //System.out.println("here"+objList);
+			       
+			    Gson gson = new Gson();
+			    String json = gson.toJson(List2);
+			        
+			    Context context1 = getApplication();
+			    LoadSave ls = new LoadSave();
+			    ls.saveInFile(json,context1,FILENAME2);	
+			    
+			    Intent intent = new Intent(Main.this,MainCounter.class);
+	            intent.putExtra("selected1", text);
+	            startActivity(intent);  
 			
 				}
 				
@@ -157,9 +174,16 @@ public class Main extends Activity {
 	            						R.layout.list_item, noteList);
 	            				 myListview.setAdapter(aa);		
 		
-	}
+	            }
 
 	
-  }
+	}
+	@Override
+	public void onPause() {
+	    super.onPause();  // Always call the superclass method first
+	    
+	    finish();
+        
+        }
 	
 }

@@ -23,6 +23,7 @@ import com.google.gson.reflect.TypeToken;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -107,6 +108,8 @@ public class MainCounter extends Activity {
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
+						Intent intent = new Intent(MainCounter.this,Main.class);
+			            startActivity(intent);  
 						finish();
 						
 						
@@ -141,20 +144,20 @@ public class MainCounter extends Activity {
 	public void onPause() {
 	    super.onPause();  // Always call the superclass method first
 	    
-	    setResult(RESULT_OK);
-	    String text = passedVar;
+	    //setResult(RESULT_OK);
+	    //String text = passedVar;
 
        
-        objList.add(new CounterModel(text));
+       // objList.add(new CounterModel(text));
         
-        System.out.println("here"+objList);
+       // System.out.println("here"+objList);
        
-        Gson gson = new Gson();
-        String json = gson.toJson(objList);
+       // Gson gson = new Gson();
+       // String json = gson.toJson(objList);
         
-        Context context1 = getApplication();
-        LoadSave ls = new LoadSave();
-        ls.saveInFile(json,context1,FILENAME2);
+       // Context context1 = getApplication();
+       // LoadSave ls = new LoadSave();
+       // ls.saveInFile(json,context1,FILENAME2);
         
         }
 	    
