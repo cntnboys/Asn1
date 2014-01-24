@@ -1,15 +1,7 @@
 package com.example.counter;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.google.gson.Gson;
 
 import android.app.Activity;
 import android.content.Context;
@@ -23,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 
 
@@ -158,7 +152,7 @@ public class Main extends Activity {
 				Context context2 = getApplication();
 	            LoadSave ld = new LoadSave();
 	            List2 = ld.loadFromFile(FILENAME2,objList,context2);
-	            System.out.println("List2"+List2); 
+	            //System.out.println("List2"+List2); 
 	            
 	            //loop through counter objects
 	            for(int i=0;i<List2.size();i++){
@@ -170,7 +164,7 @@ public class Main extends Activity {
 	            	String countstring = Integer.toString(countofcounter);
 	            	
 	            	noteList.add(nameofcount+" "+countstring);
-	            	System.out.println(nameofcount+countstring);
+	            	//System.out.println(nameofcount+countstring);
 	            	
 	            	 aa = new ArrayAdapter<String>(this,
 	            						R.layout.list_item, noteList);

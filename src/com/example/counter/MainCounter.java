@@ -1,28 +1,12 @@
 package com.example.counter;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -58,16 +42,16 @@ public class MainCounter extends Activity {
 		passedVar = getIntent().getStringExtra("selected1");
 		
 	    passedVar = passedVar.substring(0, passedVar.indexOf(" ")); 
-		
-		
-		
-		
+
 		
 		
 		//Button increment count
 		Button btnSimple2 = (Button) findViewById(R.id.button2);
 		text = (TextView) findViewById(R.id.text1);
 		text.setText("0");
+		
+		
+		
 		btnSimple2.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -76,10 +60,12 @@ public class MainCounter extends Activity {
 				count = count + 1;
 				text.setText(""+count);
 				
-				
-		      }
-	   });
-		
+				Context context3 = getApplication();	
+				UpdateCount ld = new UpdateCount();
+			    ld.update(count, context3, FILENAME2, List2, passedVar);
+			 
+			}
+		});
 		
 		
 		
@@ -92,12 +78,15 @@ public class MainCounter extends Activity {
 						// TODO Auto-generated method stub
 						count = 0;
 						text.setText(""+count);
+						Context context3 = getApplication();	
+						UpdateCount ld = new UpdateCount();
+					    ld.update(count, context3, FILENAME2, List2, passedVar);
 						
 						
 				      }
 			   });
 		 
-		 
+		
 		 
 		 
 		 
@@ -127,7 +116,13 @@ public class MainCounter extends Activity {
 		
 		public void onClick(View v) {
 			
-			//delete();
+			
+			Context context3 = getApplication();	
+			UpdateCount ld = new UpdateCount();
+		    ld.delete(context3, FILENAME2, List2, passedVar);
+		     
+		    Intent intent = new Intent(MainCounter.this,Main.class);
+            startActivity(intent);  
 			finish();
 
 		}
@@ -139,15 +134,16 @@ public class MainCounter extends Activity {
 	
 	
 	
-	
+	//On Pause 
 	@Override
 	public void onPause() {
-	    super.onPause();  // Always call the superclass method first
-	    
-	    
+	    super.onPause(); 
+	    //loop through counter objects
+        	
         
-        }
-	    
+	}
+        	
+
 	    
 	@Override
     protected void onStart() {
@@ -156,7 +152,7 @@ public class MainCounter extends Activity {
             //list of counter models
             Context context2 = getApplication();
             LoadSave ld = new LoadSave();
-            List<CounterModel> List2 = ld.loadFromFile(FILENAME2,objList,context2);
+            List2 = ld.loadFromFile(FILENAME2,objList,context2);
            // System.out.println("List2"+List2); 
             
             //loop through counter objects
@@ -167,7 +163,7 @@ public class MainCounter extends Activity {
             	
             	
             	if(strincheck.equals(passedVar)){
-            		System.out.println("passed"+passedVar);
+            		//System.out.println("passed"+passedVar);
             		passedView =(TextView)findViewById(R.id.passed);
             		
             		passedView.setText(passedVar);
@@ -175,7 +171,8 @@ public class MainCounter extends Activity {
             	    passedView =(TextView)findViewById(R.id.text1);
             	    
             	    int counter = cam2.getCount();
-            	    System.out.println("thisiscounter"+counter);
+            	    count = counter;
+            	    //System.out.println("thisiscounter"+counter);
             		passedView.setText(""+counter);
             		
             		
