@@ -3,17 +3,26 @@ package com.example.counter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.Gson;
-
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainCounter extends Activity {
+	
+	
+	Context context = this;
+	Button button;
+	String result;
+	
 
 	int count = 0;
 	TextView text;
@@ -128,18 +137,77 @@ public class MainCounter extends Activity {
 		}
 			
        });   
+	
+	
+	
+	
+	//Button edit button. Finishes current activity
+    //http://www.mkyong.com/android/android-prompt-user-input-dialog-example/
+    Button btnSimple7 = (Button) findViewById(R.id.button4);	
+    btnSimple7.setOnClickListener(new View.OnClickListener() {
+	
+	public void onClick(View v) {
+		
+		// get prompts.xml view
+		LayoutInflater li = LayoutInflater.from(context);
+		View promptsView = li.inflate(R.layout.prompts, null);
+
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+				context);
+
+		// set prompts.xml to alertdialog builder
+		alertDialogBuilder.setView(promptsView);
+
+		final EditText userInput = (EditText) promptsView
+				.findViewById(R.id.editTextDialogUserInput);
+
+		// set dialog message
+		alertDialogBuilder
+			.setCancelable(false)
+			.setPositiveButton("OK",
+			  new DialogInterface.OnClickListener() {
+			    public void onClick(DialogInterface dialog,int id) {
+				// get user input and set it to result
+				// edit text
+				result = userInput.getText().toString();
+				//System.out.println(result);
+				
+				Context context3 = getApplication();	
+				UpdateCount ld233 = new UpdateCount();
+			    ld233.rename(result, context3, FILENAME2, List2, passedVar);
+			    Intent intent = new Intent(MainCounter.this,Main.class);
+		        startActivity(intent);  
+				finish();
+
+			    }
+			  })
+			.setNegativeButton("Cancel",
+			  new DialogInterface.OnClickListener() {
+			    public void onClick(DialogInterface dialog,int id) {
+				dialog.cancel();
+			    }
+			  });
+
+		// create alert dialog
+		AlertDialog alertDialog = alertDialogBuilder.create();
+
+		// show it
+		alertDialog.show();
+		
+
 	}
+		
 	
+    });
 	
-	
+	}
 	
 	
 	//On Pause 
 	@Override
 	public void onPause() {
 	    super.onPause(); 
-	    //loop through counter objects
-        	
+	    
         
 	}
         	
