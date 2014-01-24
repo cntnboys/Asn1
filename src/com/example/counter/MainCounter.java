@@ -32,7 +32,7 @@ public class MainCounter extends Activity {
 
 	int count = 0;
 	TextView text;
-    final String FILENAME = "file4.sav";
+ 
     
     //testfilename for saving objects
     final String FILENAME2 = "counter2.sav";
@@ -124,7 +124,7 @@ public class MainCounter extends Activity {
 		
 		public void onClick(View v) {
 			
-			delete();
+			//delete();
 			finish();
 
 		}
@@ -179,77 +179,16 @@ public class MainCounter extends Activity {
             }
     }
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void delete(){
-		ContextWrapper c = new ContextWrapper(this);
-		String delete = c.getFilesDir().getPath().toString()+"/"+ FILENAME;
-		File file = new File(delete);
-		
-		File temp = null;
-		try {
-			temp = File.createTempFile("file", ".sav", file.getParentFile());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		String charset = "UTF-8";
-		
-		String deletestring = passedVar;
-		
-		BufferedReader reader = null;
-		try {
-			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), charset));
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		PrintWriter writer = null;
-		try {
-			writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(temp), charset));
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			for (String line; (line = reader.readLine()) != null;) {
-				line = line.replace(deletestring, "");
-				writer.println(line);
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-			
-			try {
-				reader.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			writer.close();
-			file.delete();
-			temp.renameTo(file);	
-	}
-	
-			
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

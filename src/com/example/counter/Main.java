@@ -34,9 +34,17 @@ public class Main extends Activity {
 	
 	
 	private static final String FILENAME = "file4.sav";
+	final String FILENAME2 = "counter2.sav";
 	private ListView myListview;
 	private EditText myEditText;
 	private ArrayAdapter<String> aa = null; 
+	
+	List<CounterModel> objList = new ArrayList<CounterModel>();
+	List<CounterModel> List2 = new ArrayList<CounterModel>();
+	    
+	
+	
+	
 	
 	
 	@Override
@@ -84,7 +92,7 @@ public class Main extends Activity {
 				String text = myEditText.getText().toString().trim();
 
 ;
-				System.out.println(noteList);
+				//System.out.println(noteList);
 				
 				
 				if(text.equals("")){
@@ -103,8 +111,8 @@ public class Main extends Activity {
 			
 				else{
 					
-				saveInFile(text+"\n");
-				noteList.add(text);
+				//saveInFile(text+"\n");
+				//noteList.add(text);
 				aa.notifyDataSetChanged();
 				//passedView.setText(passedVar);
 				myEditText.setText("");
@@ -121,66 +129,37 @@ public class Main extends Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
-		List<String> tweets = loadFromFile();
-		noteList = tweets;
+		//List<String> tweets = loadFromFile();
+		//noteList = tweets;
 		
 		//System.out.println(tweets);
 		
-		 aa = new ArrayAdapter<String>(this,
-				R.layout.list_item, tweets);
-		myListview.setAdapter(aa);
+		
+				
+				Context context2 = getApplication();
+	            LoadSave ld = new LoadSave();
+	            List2 = ld.loadFromFile(FILENAME2,objList,context2);
+	            System.out.println("List2"+List2); 
+	            
+	            //loop through counter objects
+	            for(int i=0;i<List2.size();i++){
+	            	
+	            	CounterModel cam2 = List2.get(i);
+	            	String nameofcount = cam2.getText().toString();
+	            	
+	            	int countofcounter = cam2.getCount();
+	            	String countstring = Integer.toString(countofcounter);
+	            	
+	            	noteList.add(nameofcount+" "+countstring);
+	            	System.out.println(nameofcount+countstring);
+	            	
+	            	 aa = new ArrayAdapter<String>(this,
+	            						R.layout.list_item, noteList);
+	            				 myListview.setAdapter(aa);		
 		
 	}
 
 	
+  }
 	
-	//Used from Lonely Twitter and modified accordingly
-	private List<String> loadFromFile() {
-		
-		List<String> tweets = new ArrayList<String>();
-		//System.out.println(tweets);
-		try {
-			FileInputStream fis = openFileInput(FILENAME);
-			BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-			String line = in.readLine();
-			while (line != null) {
-				if (!line.equals("")) // don't write out blank lines
-			    {
-				tweets.add(line);
-			    }
-				line = in.readLine();
-			
-				//System.out.println(line);
-			}
-			//System.out.println(tweets);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return tweets;
-		//return tweets.toArray(new String[tweets.size()]);
-	}
-	
-	
-	
-	
-	private void saveInFile(String text) {
-		try {
-			FileOutputStream fos = openFileOutput(FILENAME,
-					Context.MODE_APPEND);
-			fos.write(new String(text)
-					.getBytes());
-			fos.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 }
-	
