@@ -152,7 +152,14 @@ public class Main extends Activity {
 				Context context2 = getApplication();
 	            LoadSave ld = new LoadSave();
 	            List2 = ld.loadFromFile(FILENAME2,objList,context2);
-	            //System.out.println("List2"+List2); 
+	            
+	            
+	            // send List 2 to be sorted
+	            ListSort sl = new ListSort();
+	            //List2 = sl.listsort(context2, List2);
+	            
+	            
+	            
 	            
 	            //loop through counter objects
 	            for(int i=0;i<List2.size();i++){
