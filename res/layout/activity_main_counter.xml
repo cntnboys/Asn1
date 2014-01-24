@@ -8,26 +8,49 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainCounter" >
 
-    <EditText
-        android:id="@+id/text1"
-        android:layout_width="75dp"
+    <Button
+        android:id="@+id/backbutton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="33dp"
-        android:clickable="false"
-        android:cursorVisible="false"
-        android:ems="10"
-        android:focusable="false"
-        android:focusableInTouchMode="false" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/button3"
+        android:text="Back" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Delete" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/delete"
+        android:layout_alignBottom="@+id/delete"
+        android:layout_alignParentLeft="true"
+        android:text="Reset" />
+
+    <Button
+        android:id="@+id/button2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:layout_above="@+id/delete"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignRight="@+id/delete"
+        android:layout_marginBottom="48dp"
+        android:text="Add" />
 
     <EditText
         android:id="@+id/passed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/text1"
+        android:layout_below="@+id/backbutton"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="26dp"
         android:clickable="false"
         android:cursorVisible="false"
         android:ems="10"
@@ -35,40 +58,40 @@
         android:focusableInTouchMode="false"
         android:inputType="textNoSuggestions" />
 
-    <Button
-        android:id="@+id/backbutton"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/text1"
+        android:layout_width="75dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Back" />
+        android:layout_alignLeft="@+id/passed"
+        android:layout_alignRight="@+id/passed"
+        android:layout_below="@+id/passed"
+        android:layout_marginTop="15dp"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false" >
+
+        <requestFocus />
+    </EditText>
 
     <Button
-        android:id="@+id/delete"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="26dp"
-        android:text="Delete" />
-
-    <Button
-        android:id="@+id/button2"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button3"
+        android:layout_alignBaseline="@+id/delete"
+        android:layout_alignBottom="@+id/delete"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:text="Add" />
+        android:text="Summary" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/delete"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_marginBottom="14dp"
-        android:text="Reset" />
+        android:layout_alignBottom="@+id/backbutton"
+        android:layout_alignLeft="@+id/delete"
+        android:layout_alignRight="@+id/button2"
+        android:layout_alignTop="@+id/backbutton"
+        android:text="Edit" />
 
 </RelativeLayout>
