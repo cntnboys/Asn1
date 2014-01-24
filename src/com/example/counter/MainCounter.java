@@ -56,7 +56,8 @@ public class MainCounter extends Activity {
 		
 		//http://www.youtube.com/watch?v=XPKb_JqeTp8
 		passedVar = getIntent().getStringExtra("selected1");
-	    passedVar= passedVar.substring(0, passedVar.indexOf(" ")); 
+		
+	    passedVar = passedVar.substring(0, passedVar.indexOf(" ")); 
 		
 		
 		

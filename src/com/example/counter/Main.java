@@ -93,7 +93,7 @@ public class Main extends Activity {
 				setResult(RESULT_OK);
 				String text = myEditText.getText().toString().trim();
 
-;
+
 				//System.out.println(noteList);
 				
 				
@@ -130,6 +130,8 @@ public class Main extends Activity {
 			    Context context1 = getApplication();
 			    LoadSave ls = new LoadSave();
 			    ls.saveInFile(json,context1,FILENAME2);	
+			    
+			    text = text+" 0";
 			    
 			    Intent intent = new Intent(Main.this,MainCounter.class);
 	            intent.putExtra("selected1", text);
