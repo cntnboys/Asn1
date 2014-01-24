@@ -56,8 +56,7 @@ public class MainCounter extends Activity {
 		
 		//http://www.youtube.com/watch?v=XPKb_JqeTp8
 		passedVar = getIntent().getStringExtra("selected1");
-		//passedView =(TextView)findViewById(R.id.passed);
-		//passedView.setText(passedVar);
+	    passedVar= passedVar.substring(0, passedVar.indexOf(" ")); 
 		
 		
 		
@@ -121,7 +120,7 @@ public class MainCounter extends Activity {
 		 
 		 
 		 
-		 //Button 5 Back button. Finishes current activity
+		 //Button delete button. Finishes current activity
 	     Button btnSimple5 = (Button) findViewById(R.id.delete);	
          btnSimple5.setOnClickListener(new View.OnClickListener() {
 		
@@ -144,20 +143,7 @@ public class MainCounter extends Activity {
 	public void onPause() {
 	    super.onPause();  // Always call the superclass method first
 	    
-	    //setResult(RESULT_OK);
-	    //String text = passedVar;
-
-       
-       // objList.add(new CounterModel(text));
-        
-       // System.out.println("here"+objList);
-       
-       // Gson gson = new Gson();
-       // String json = gson.toJson(objList);
-        
-       // Context context1 = getApplication();
-       // LoadSave ls = new LoadSave();
-       // ls.saveInFile(json,context1,FILENAME2);
+	    
         
         }
 	    
@@ -170,14 +156,33 @@ public class MainCounter extends Activity {
             Context context2 = getApplication();
             LoadSave ld = new LoadSave();
             List<CounterModel> List2 = ld.loadFromFile(FILENAME2,objList,context2);
-            System.out.println("List2"+List2); 
+           // System.out.println("List2"+List2); 
             
             //loop through counter objects
             for(int i=0;i<List2.size();i++){
             	
             	CounterModel cam2 = List2.get(i);
+            	String strincheck = cam2.getText();
+            	
+            	
+            	if(strincheck.equals(passedVar)){
+            		System.out.println("passed"+passedVar);
+            		passedView =(TextView)findViewById(R.id.passed);
+            		
+            		passedView.setText(passedVar);
+            		
+            	    passedView =(TextView)findViewById(R.id.text1);
+            	    
+            	    int counter = cam2.getCount();
+            	    System.out.println("thisiscounter"+counter);
+            		passedView.setText(""+counter);
+            		
+            		
+            	}
+            	
+            	
             	cam2.getText().toString();
-            	System.out.println(cam2);
+            	//System.out.println(cam2);
             	
             }
     }
