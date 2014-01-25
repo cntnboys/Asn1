@@ -267,7 +267,7 @@ public class MainCounter extends Activity {
             	//System.out.println(cam2);
             	
             }
-    }
+	}
 	
 }
 	
