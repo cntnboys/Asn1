@@ -93,9 +93,10 @@ public class SummaryActivity extends Activity {
 				    ld6.day(context3, datelist2);
 				    
 				    
-					
-            		
-            		
+				    //day stats
+				    DateParse ld7 = new DateParse();
+				    ld7.hour(context3, datelist2);
+  
             		
             		
             	}
