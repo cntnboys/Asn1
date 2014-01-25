@@ -9,7 +9,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class SummaryActivity extends Activity {
@@ -20,6 +22,8 @@ public class SummaryActivity extends Activity {
     List<CounterModel> objList = new ArrayList<CounterModel>();
     protected String passedVar = null;
     protected List<Date> datelist2 = new ArrayList<Date>();
+    private ListView myListview2;
+    private ArrayAdapter<String> aa2 = null; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,17 @@ public class SummaryActivity extends Activity {
 		
 	}
 	
+	//On Pause 
+			@Override
+			public void onPause() {
+			    super.onPause(); 
+			    finish();
+		        
+			}
+	
+	
+	
+	
 	@Override
     protected void onStart() {
             // TODO Auto-generated method stub
@@ -78,25 +93,51 @@ public class SummaryActivity extends Activity {
             		//year stats
             		Context context3 = getApplication();	
 				    DateParse ld3 = new DateParse();
-				    ld3.year(context3, datelist2);
+				    List<String> listyear = ld3.year(context3, datelist2);
 				    
 				    //month stats
 				    DateParse ld4 = new DateParse();
-				    ld4.month(context3, datelist2);
+				    List<String> listmonth =ld4.month(context3, datelist2);
 				    
 				    //week stats
 				    DateParse ld5 = new DateParse();
-				    ld5.week(context3, datelist2);
+				    List<String> listweek =ld5.week(context3, datelist2);
 					
 				    //day stats
 				    DateParse ld6 = new DateParse();
-				    ld6.day(context3, datelist2);
+				    List<String> listday =ld6.day(context3, datelist2);
 				    
 				    
 				    //hour stats
 				    DateParse ld7 = new DateParse();
-				    ld7.hour(context3, datelist2);
-  
+				    List<String> listhour =ld7.hour(context3, datelist2);
+				    
+				    
+				    //add lists together for display
+				    List<String> FinalList = new ArrayList<String>();
+				    String year = "---YEAR---";
+				    FinalList.add(year);
+				    FinalList.addAll(listyear);
+				    String month = "---Month---";
+				    FinalList.add(month);
+				    FinalList.addAll(listmonth);
+				    String week = "---Week---";
+				    FinalList.add(week);
+				    FinalList.addAll(listweek);
+				    String day = "---Day---";
+				    FinalList.add(day);
+				    FinalList.addAll(listday);
+				    String hour = "---Hour---";
+				    FinalList.add(hour);
+				    FinalList.addAll(listhour);
+				    
+				    System.out.println("FInallist"+FinalList);
+				    
+				    myListview2 = (ListView)findViewById(R.id.counterlist);
+				    aa2 = new ArrayAdapter<String>(this,
+    						R.layout.list_item, FinalList);
+    				 myListview2.setAdapter(aa2);		
+
             		
             		
             	}

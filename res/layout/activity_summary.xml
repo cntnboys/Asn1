@@ -22,8 +22,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="54dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginRight="77dp"
+        android:layout_marginTop="26dp"
+        android:textSize="32sp"
         android:text="Summary" />
+
+   <ListView
+       android:id="@+id/counterlist"
+       android:layout_width="match_parent"
+       android:layout_height="355dp"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentLeft="true" >
+
+    </ListView>
 
 </RelativeLayout>
