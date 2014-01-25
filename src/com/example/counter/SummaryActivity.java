@@ -1,6 +1,7 @@
 package com.example.counter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
@@ -18,7 +19,7 @@ public class SummaryActivity extends Activity {
 	final String FILENAME2 = "counter2.sav";
     List<CounterModel> objList = new ArrayList<CounterModel>();
     protected String passedVar = null;
-    
+    protected List<Date> datelist2 = new ArrayList<Date>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,15 @@ public class SummaryActivity extends Activity {
             	
             	
             	if(strincheck.equals(passedVar)){
+            		
+            		datelist2 = cam2.getDatelist();
+            		System.out.println(datelist2);
+            		
+            		Context context3 = getApplication();	
+				    DateParse ld3 = new DateParse();
+				    ld3.year(context3, datelist2);
+					
+            		
             		
             		
             		

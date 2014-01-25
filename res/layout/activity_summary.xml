@@ -8,16 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SummaryActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="37dp"
-        android:layout_marginTop="24dp"
-        android:text="Summary" />
-
     <Button
         android:id="@+id/back2"
         android:layout_width="wrap_content"
@@ -25,5 +15,15 @@
         android:layout_alignBottom="@+id/textView1"
         android:layout_alignParentLeft="true"
         android:text="Back" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="54dp"
+        android:layout_marginTop="23dp"
+        android:text="Summary" />
 
 </RelativeLayout>

@@ -25,7 +25,7 @@ public final class R {
     }
     public static final class id {
         public static final int action_settings=0x7f080010;
-        public static final int back2=0x7f080009;
+        public static final int back2=0x7f080008;
         public static final int backbutton=0x7f080000;
         public static final int button2=0x7f080003;
         public static final int button3=0x7f080001;
@@ -39,7 +39,7 @@ public final class R {
         public static final int passed=0x7f080004;
         public static final int summary=0x7f080006;
         public static final int text1=0x7f080005;
-        public static final int textView1=0x7f080008;
+        public static final int textView1=0x7f080009;
         public static final int yourcounters=0x7f08000b;
     }
     public static final class layout {
