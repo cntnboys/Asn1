@@ -38,6 +38,10 @@
             android:name="com.example.counter.MainCounter"
             android:label="@string/title_activity_main_counter" >
         </activity>
+        <activity
+            android:name="com.example.counter.SummaryActivity"
+            android:label="@string/title_activity_summary" >
+        </activity>
     </application>
 
 </manifest>

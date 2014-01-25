@@ -137,6 +137,22 @@ public class MainCounter extends Activity {
 		}
 			
        });   
+         
+       //Button Summary button. Finishes current activity
+	     Button btnSimple55 = (Button) findViewById(R.id.summary);	
+         btnSimple55.setOnClickListener(new View.OnClickListener() {
+		
+		public void onClick(View v) {
+			
+			EditText edittext2 = (EditText)findViewById(R.id.passed);
+			String sentname = edittext2.getText().toString();
+			Intent intent = new Intent(MainCounter.this,SummaryActivity.class);
+            intent.putExtra("selected2", sentname );
+            startActivity(intent);  
+
+		}
+			
+       });   
 	
 	
 	
@@ -207,7 +223,7 @@ public class MainCounter extends Activity {
 	@Override
 	public void onPause() {
 	    super.onPause(); 
-	    
+	    finish();
         
 	}
         	
@@ -247,7 +263,7 @@ public class MainCounter extends Activity {
             	}
             	
             	
-            	cam2.getText().toString();
+            	//cam2.getText().toString();
             	//System.out.println(cam2);
             	
             }

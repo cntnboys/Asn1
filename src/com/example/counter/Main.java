@@ -42,6 +42,14 @@ public class Main extends Activity {
 	    
 	
 	
+	//On Pause 
+		@Override
+		public void onPause() {
+		    super.onPause(); 
+		    finish();
+	        
+		}
+	
 	
 	
 	
@@ -80,7 +88,7 @@ public class Main extends Activity {
 	     });
 		
 		//Button plus sign
-		Button btnSimple = (Button) findViewById(R.id.button1);
+		Button btnSimple = (Button) findViewById(R.id.summary);
 		btnSimple.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -131,7 +139,8 @@ public class Main extends Activity {
 			    
 			    Intent intent = new Intent(Main.this,MainCounter.class);
 	            intent.putExtra("selected1", text);
-	            startActivity(intent);  
+	            startActivity(intent);
+	            finish();
 			
 				}
 				
