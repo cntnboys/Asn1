@@ -75,9 +75,24 @@ public class SummaryActivity extends Activity {
             		datelist2 = cam2.getDatelist();
             		System.out.println(datelist2);
             		
+            		//year stats
             		Context context3 = getApplication();	
 				    DateParse ld3 = new DateParse();
 				    ld3.year(context3, datelist2);
+				    
+				    //month stats
+				    DateParse ld4 = new DateParse();
+				    ld4.month(context3, datelist2);
+				    
+				    //week stats
+				    DateParse ld5 = new DateParse();
+				    ld5.week(context3, datelist2);
+					
+				    //day stats
+				    DateParse ld6 = new DateParse();
+				    ld6.day(context3, datelist2);
+				    
+				    
 					
             		
             		
