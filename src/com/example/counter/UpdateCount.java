@@ -92,6 +92,35 @@ public class UpdateCount {
 	
 }
 	
+	public void reset(int count, Context appcontext, String FILENAME2, List<CounterModel> List2, String passedVar){
+		for(int i=0;i<List2.size();i++){
+    	
+    	CounterModel cam2 = List2.get(i);
+    	String strincheck = cam2.getText();
+    	
+    	System.out.println("printhere"+strincheck);
+    	if(strincheck.equals(passedVar)){
+    		
+    		//System.out.println("printhere2"+count);
+    	    cam2.setCount(count);
+    	    cam2.resetDatelist();
+		        
+		    //System.out.println("here"+objList);
+		       
+		    Gson gson = new Gson();
+		    String json = gson.toJson(List2);
+		        
+		    
+		    LoadSave ls = new LoadSave();
+		    ls.saveInFile(json,appcontext,FILENAME2);	
+		    
+    	}
+    	
+		}
+	
+	
+}
+	
 
 
 }

@@ -21,6 +21,11 @@ public class CounterModel {
 		timestamp = new Date(System.currentTimeMillis());
 		datelist.add(timestamp);
 	}
+	
+	public void resetDatelist(){
+		datelist =  new ArrayList<Date>();
+		
+	}
 
 	public CounterModel(String text) {
        setText(text);

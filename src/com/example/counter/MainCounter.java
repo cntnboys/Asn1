@@ -89,7 +89,7 @@ public class MainCounter extends Activity {
 						text.setText(""+count);
 						Context context3 = getApplication();	
 						UpdateCount ld = new UpdateCount();
-					    ld.update(count, context3, FILENAME2, List2, passedVar);
+					    ld.reset(count, context3, FILENAME2, List2, passedVar);
 						
 						
 				      }

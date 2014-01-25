@@ -216,9 +216,8 @@ public List<String> hour(Context appcontext, List<Date> datelist2){
 	Set<String> unique = new HashSet<String>(list22);
 	for (String key : unique){
 		listyearfinal.add(key +": " + Collections.frequency(list22, key));
-		System.out.println("hour"+listyearfinal);
 	}
-	
+	System.out.println("hour"+listyearfinal);
 	return listyearfinal;
 
 }
