@@ -1,6 +1,8 @@
 package com.example.counter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import android.app.Activity;
@@ -154,9 +156,15 @@ public class Main extends Activity {
 	            List2 = ld.loadFromFile(FILENAME2,objList,context2);
 	            
 	            
+	           // http://stackoverflow.com/questions/4066538/sort-an-arraylist-based-on-an-object-field
 	            // send List 2 to be sorted
-	            ListSort sl = new ListSort();
-	            //List2 = sl.listsort(context2, List2);
+	            Collections.sort(List2, new Comparator<CounterModel>(){
+	                public int compare(CounterModel o1, CounterModel o2){
+	                    if(o1.getCount() == o2.getCount())
+	                        return 0;
+	                    return o1.getCount() > o2.getCount() ? -1 : 1;
+	                }
+	           });
 	            
 	            
 	            
@@ -181,12 +189,5 @@ public class Main extends Activity {
 
 	
 	}
-	@Override
-	public void onPause() {
-	    super.onPause();  // Always call the superclass method first
-	    
-	    finish();
-        
-        }
 	
 }
