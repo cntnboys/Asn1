@@ -16,24 +16,34 @@
         android:layout_alignParentLeft="true"
         android:text="Back" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="77dp"
-        android:layout_marginTop="26dp"
-        android:textSize="32sp"
-        android:text="Summary" />
-
    <ListView
        android:id="@+id/counterlist"
        android:layout_width="match_parent"
-       android:layout_height="355dp"
+       android:layout_height="300dp"
        android:layout_alignParentBottom="true"
        android:layout_alignParentLeft="true" >
 
     </ListView>
+
+   <TextView
+       android:id="@+id/textView1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_alignRight="@+id/counterlist"
+       android:layout_marginRight="40dp"
+       android:layout_marginTop="22dp"
+       android:text="Summary"
+       android:textSize="32sp" />
+
+   <TextView
+       android:id="@+id/TextView01"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/back2"
+       android:layout_below="@+id/back2"
+       android:layout_marginTop="18dp"
+       android:text="Scroll to see summary statistics (Year,Month,Week,Day,Hour)"
+       android:textSize="10sp" />
 
 </RelativeLayout>

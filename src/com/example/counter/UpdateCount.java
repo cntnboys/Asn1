@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 
 import android.content.Context;
 import android.text.Editable;
+import android.widget.Toast;
 
 public class UpdateCount {
 	
@@ -70,8 +71,16 @@ public class UpdateCount {
 	public void rename(String newname, Context appcontext, String FILENAME2, List<CounterModel> List2, String passedVar){
 		for(int i=0;i<List2.size();i++){
     	
+			
+		newname = newname.trim();	
     	CounterModel cam2 = List2.get(i);
     	String strincheck = cam2.getText();
+    	
+    	if(strincheck.equals(newname)){
+    		Toast.makeText(appcontext.getApplicationContext(), "Counter name already exists",
+					   Toast.LENGTH_LONG).show();
+    		return;
+    	}
     	
     	System.out.println("printhere"+strincheck);
     	if(strincheck.equals(passedVar)){

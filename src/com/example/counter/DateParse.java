@@ -39,7 +39,7 @@ public class DateParse {
 			
 		}
 	
-		
+		//http://stackoverflow.com/questions/5211194/count-occurences-of-words-in-arraylist
 		Set<String> unique = new HashSet<String>(list22);
 		for (String key : unique){
 			listyearfinal.add(key +": " + Collections.frequency(list22, key));
