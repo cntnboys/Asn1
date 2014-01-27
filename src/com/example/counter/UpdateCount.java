@@ -2,11 +2,10 @@ package com.example.counter;
 
 import java.util.List;
 
-import com.google.gson.Gson;
-
 import android.content.Context;
-import android.text.Editable;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 public class UpdateCount {
 	
