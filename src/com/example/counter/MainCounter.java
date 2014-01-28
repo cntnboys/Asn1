@@ -18,49 +18,33 @@ import android.widget.TextView;
 
 public class MainCounter extends Activity {
 	
-	
 	Context context = this;
 	Button button;
 	String result;
-	
-
 	int count = 0;
 	TextView text;
- 
-    
-    //testfilename for saving objects
     final String FILENAME2 = "counter2.sav";
-    
-    
     List<CounterModel> objList = new ArrayList<CounterModel>();
     
-	
 	//passed variable from Main
 	protected String passedVar = null;
 	private TextView passedView=null;
 	List<CounterModel> List2 = new ArrayList<CounterModel>();
 	List<CounterModel> inpList = new ArrayList<CounterModel>();
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_counter);
 		
+		//get variable from Main which is equal to the text of counter the user clicked on
 		//http://www.youtube.com/watch?v=XPKb_JqeTp8
 		passedVar = getIntent().getStringExtra("selected1");
-		
 	    passedVar = passedVar.substring(0, passedVar.indexOf(" ")); 
 
-		
-		
-		//Button increment count
+		//Button increments count
 		Button btnSimple2 = (Button) findViewById(R.id.button2);
 		text = (TextView) findViewById(R.id.text1);
-		text.setText("0");
-		
-		
-		
 		btnSimple2.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -69,6 +53,7 @@ public class MainCounter extends Activity {
 				count = count + 1;
 				text.setText(""+count);
 				
+				//after button is clicked save updated count information, save everything
 				Context context3 = getApplication();	
 				UpdateCount ld = new UpdateCount();
 			    ld.update(count, context3, FILENAME2, List2, passedVar);
@@ -78,7 +63,7 @@ public class MainCounter extends Activity {
 		
 		
 		
-		//Button 3 reset
+		//Button 3 reset, resets CountModel object when button is pressed.
 	     Button btnSimple3 = (Button) findViewById(R.id.button3);
 		 btnSimple3.setOnClickListener(new View.OnClickListener() {
 					
@@ -95,11 +80,7 @@ public class MainCounter extends Activity {
 				      }
 			   });
 		 
-		
-		 
-		 
-		 
-		//Button 4 Back button. Finishes current activity
+		 //Button 4 Back button. Finishes current activity returns to Main Activity
 	     Button btnSimple4 = (Button) findViewById(R.id.backbutton);
 		 btnSimple4.setOnClickListener(new View.OnClickListener() {
 					
@@ -114,22 +95,18 @@ public class MainCounter extends Activity {
 				      }
 			   });
 		 
-		 
-		 
-		 
-		 
-		 
-		 //Button delete button. Finishes current activity
+		 //Button delete. Deletes the curently selected CounterModel object.
 	     Button btnSimple5 = (Button) findViewById(R.id.delete);	
          btnSimple5.setOnClickListener(new View.OnClickListener() {
 		
 		public void onClick(View v) {
 			
-			
+			//delete CounterModel Object
 			Context context3 = getApplication();	
 			UpdateCount ld = new UpdateCount();
 		    ld.delete(context3, FILENAME2, List2, passedVar);
-		     
+		    
+		    //return to Main Activity after successful delete
 		    Intent intent = new Intent(MainCounter.this,Main.class);
             startActivity(intent);  
 			finish();
@@ -138,7 +115,8 @@ public class MainCounter extends Activity {
 			
        });   
          
-       //Button Summary button. Finishes current activity
+         
+         //Button Summary. Navigates to the Summary Activity to display stats
 	     Button btnSimple55 = (Button) findViewById(R.id.summary);	
          btnSimple55.setOnClickListener(new View.OnClickListener() {
 		
@@ -157,10 +135,10 @@ public class MainCounter extends Activity {
 	
 	
 	
-	//Button edit button. Finishes current activity
-    //http://www.mkyong.com/android/android-prompt-user-input-dialog-example/
-    Button btnSimple7 = (Button) findViewById(R.id.button4);	
-    btnSimple7.setOnClickListener(new View.OnClickListener() {
+	  //Button edit button. Rename the currently selected Counter
+      //http://www.mkyong.com/android/android-prompt-user-input-dialog-example/
+      Button btnSimple7 = (Button) findViewById(R.id.button4);	
+      btnSimple7.setOnClickListener(new View.OnClickListener() {
 	
 	public void onClick(View v) {
 		
@@ -186,7 +164,6 @@ public class MainCounter extends Activity {
 				// get user input and set it to result
 				// edit text
 				result = userInput.getText().toString();
-				//System.out.println(result);
 				
 				Context context3 = getApplication();	
 				UpdateCount ld233 = new UpdateCount();
@@ -210,13 +187,9 @@ public class MainCounter extends Activity {
 		// show it
 		alertDialog.show();
 		
-
-	}
-		
-	
+	    }
     });
-	
-	}
+}
 	
 	
 	//On Pause 
@@ -231,44 +204,37 @@ public class MainCounter extends Activity {
 	    
 	@Override
     protected void onStart() {
-            // TODO Auto-generated method stub
             super.onStart();
-            //list of counter models
+            
+            //load from file list of counter models
             Context context2 = getApplication();
             LoadSave ld = new LoadSave();
             List2 = ld.loadFromFile(FILENAME2,objList,context2);
-           // System.out.println("List2"+List2); 
             
-            //loop through counter objects
+            //loop through counter objects and get information corresponding to Counter Selected from Main
+            //set info into the right feilds for display
             for(int i=0;i<List2.size();i++){
             	
             	CounterModel cam2 = List2.get(i);
             	String strincheck = cam2.getText();
             	
-            	
+            	//check for the right Object to access
             	if(strincheck.equals(passedVar)){
-            		//System.out.println("passed"+passedVar);
+          
+            		//display text
             		passedView =(TextView)findViewById(R.id.passed);
-            		
             		passedView.setText(passedVar);
-            		
             	    passedView =(TextView)findViewById(R.id.text1);
             	    
+            	    //getcount display
             	    int counter = cam2.getCount();
             	    count = counter;
-            	    //System.out.println("thisiscounter"+counter);
             		passedView.setText(""+counter);
             		
             		
-            	}
-            	
-            	
-            	//cam2.getText().toString();
-            	//System.out.println(cam2);
-            	
-            }
-	}
-	
+            	}    	
+          }
+	 }	
 }
 	
 	
