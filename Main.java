@@ -126,7 +126,6 @@ public class Main extends Activity {
 				}
 				
 				if(noteList.contains(text)){
-					
 					//http://stackoverflow.com/questions/3500197/how-to-display-toast-in-android
 					Toast.makeText(getApplicationContext(), "Counter already exists",
 							   Toast.LENGTH_LONG).show();
@@ -185,6 +184,8 @@ public class Main extends Activity {
 	                return o1.getCount() > o2.getCount() ? -1 : 1;
 	                }
 	           });
+	            
+	            
 	            
 	            
 	     //loop through list of Counter Objects and add to listview for display name and count
