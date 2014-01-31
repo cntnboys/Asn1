@@ -1,3 +1,28 @@
+/*
+The DateParse class contains methods that are responsible for processing a list of dates
+in different ways. The methods can process a list of dates by year,month,week,day,hr,min. 
+The methods return a list that is parsed and formated according to their method name back to
+the Summary Activity to be displayed. This is where the summary statistics are calculated. 
+
+Copyright 2014 Cameron Alexander
+<Contact: cpalexan@ualberta.ca>
+
+License GPLv3: GNU GPL Version 3
+<http://gnu.org/licenses/gpl.html>.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package com.example.counter;
 
 import java.util.ArrayList;
@@ -9,9 +34,19 @@ import java.util.Set;
 
 import android.content.Context;
 
+/**
+*The DateParse class contains methods that are responsible for processing a list of dates
+*in different ways. The methods can process a list of dates by year,month,week,day,hr,min. 
+*The methods return a list that is parsed and formated according to their method name back to
+*the Summary Activity to be displayed. This is where the summary statistics are calculated. 
+*
+* @author Cameron Alexander
+*
+*/
+
 public class DateParse {
 	
-	
+	//Initialise variables needed
 	protected List<Date> datelist33 = new ArrayList<Date>();
 	protected Date datecur=null;
 	String strdate=null;
@@ -19,38 +54,41 @@ public class DateParse {
 	List<String> list22 = new ArrayList<String>();
 	List<String> listyearfinal = new ArrayList<String>();
 	
+	
+	//method that is responsible for processing a list of dates by year 
+	//find the year and then counts the number of time that year exists
+	//in list returns year with a count next to it to display the number
+	//of clicks that happened per year
 	public List<String> year(Context appcontext, List<Date> datelist2){
-		
-		
-		
 		
 		datelist33 = datelist2;
 		for(int i=0;i<datelist33.size();i++){
 			
 			datecur = datelist33.get(i);
-			
-			
+		
+			//date to string
 			strdate = datecur.toString();
 			
+			//parse year
 			String[] parts = strdate.split(" ");
 			String lastWord = parts[parts.length - 1];
 			list22.add(lastWord);
-		
 			
 		}
-	
+		
+		//creates a hash set using a list and counts the freqency of an item within the list
 		//http://stackoverflow.com/questions/5211194/count-occurences-of-words-in-arraylist
 		Set<String> unique = new HashSet<String>(list22);
 		for (String key : unique){
 			listyearfinal.add(key +": " + Collections.frequency(list22, key));
-			System.out.println("year"+listyearfinal);
 		}
 		
 		return listyearfinal;
-	
 	}
 	
-public List<String> month(Context appcontext, List<Date> datelist2){
+	
+	
+	public List<String> month(Context appcontext, List<Date> datelist2){
 		
 		
 		
