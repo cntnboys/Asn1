@@ -119,6 +119,7 @@ public class Main extends Activity {
 				
 			//input text for new counter
 			String text = myEditText.getText().toString().trim();
+			text = text.replaceAll("\\s", "");
 				
 			//checking input
 			if(text.equals("")){
