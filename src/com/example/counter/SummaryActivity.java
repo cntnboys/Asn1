@@ -63,6 +63,7 @@ public class SummaryActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_summary);
+		getActionBar().setTitle("Cpalexan-Counter");
 		
 		//http://www.youtube.com/watch?v=XPKb_JqeTp8
 		passedVar = getIntent().getStringExtra("selected2");

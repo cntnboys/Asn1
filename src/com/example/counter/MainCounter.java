@@ -70,6 +70,7 @@ public class MainCounter extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_counter);
+		getActionBar().setTitle("Cpalexan-Counter");
 		
 		//get variable from Main which is equal to the text of counter the user clicked on
 		//http://www.youtube.com/watch?v=XPKb_JqeTp8
