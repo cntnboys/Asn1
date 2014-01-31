@@ -1,5 +1,5 @@
 /*
-The MainCounter class is the Activity that is responsible for displaying the information from
+The MainCounter class represents the Activity that is responsible for displaying the information from
 counter selected from Main. It is where the CounterModel Objects can be unpacked and displayed and modified.
 It allows the user to increment the counter, reset, delete , rename or go to a statistics summary page.
 It is composed of some text fields and some buttons with listeners with a dialog box for renaming. 
@@ -52,6 +52,7 @@ import android.widget.TextView;
 
 public class MainCounter extends Activity {
 	
+	//declared all needed variables
 	Context context = this;
 	String result;
 	int count = 0;
@@ -76,62 +77,60 @@ public class MainCounter extends Activity {
 		passedVar = getIntent().getStringExtra("selected1");
 	    passedVar = passedVar.substring(0, passedVar.indexOf(" ")); 
 
-		//Button increments count
+		//Button increments count, Click me
 		Button btnSimple2 = (Button) findViewById(R.id.button2);
 		text = (TextView) findViewById(R.id.text1);
 		btnSimple2.setOnClickListener(new View.OnClickListener() {
 			
-			@Override
-			public void onClick(View v) {
+		@Override
+		public void onClick(View v) {
 				
-				count = count + 1;
-				text.setText(""+count);
+			count = count + 1;
+			text.setText(""+count);
 				
-				//after button is clicked save updated count information, save everything
-				Context context3 = getApplication();	
-				UpdateCount ld = new UpdateCount();
-			    ld.update(count, context3, FILENAME2, List2, passedVar);
+			//after button is clicked save updated count information, save everything
+			Context context3 = getApplication();	
+			UpdateCount ld = new UpdateCount();
+			ld.update(count, context3, FILENAME2, List2, passedVar);
 			 
-			}
-		});
+		}
+});
 		
 		
 		
 		//Button 3 reset, resets CountModel object when button is pressed, calls reset
-	     Button btnSimple3 = (Button) findViewById(R.id.button3);
-		 btnSimple3.setOnClickListener(new View.OnClickListener() {
+	    Button btnSimple3 = (Button) findViewById(R.id.button3);
+	    btnSimple3.setOnClickListener(new View.OnClickListener() {
 					
-					@Override
-					public void onClick(View v) {
+		@Override
+		public void onClick(View v) {
 		
-						count = 0;
-						text.setText(""+count);
-						Context context3 = getApplication();	
-						UpdateCount ld = new UpdateCount();
-					    ld.reset(count, context3, FILENAME2, List2, passedVar);
-						
-						
-				      }
-			   });
+			count = 0;
+			text.setText(""+count);
+			Context context3 = getApplication();	
+			UpdateCount ld = new UpdateCount();
+		    ld.reset(count, context3, FILENAME2, List2, passedVar);								
+	   }
+ });
 		 
 		 //Button 4 Back button. Finishes current activity returns to Main Activity
 	     Button btnSimple4 = (Button) findViewById(R.id.backbutton);
 		 btnSimple4.setOnClickListener(new View.OnClickListener() {
 					
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						Intent intent = new Intent(MainCounter.this,Main.class);
-			            startActivity(intent);  
-						finish();
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			Intent intent = new Intent(MainCounter.this,Main.class);
+			startActivity(intent);  
+			finish();
 						
 						
-				      }
-			   });
+	    }
+});
 		 
-		 //Button delete. Deletes the counter selected currently,deletes its object CounterModel.
-	     Button btnSimple5 = (Button) findViewById(R.id.delete);	
-         btnSimple5.setOnClickListener(new View.OnClickListener() {
+	    //Button delete. Deletes the counter selected currently,deletes its object CounterModel.
+	    Button btnSimple5 = (Button) findViewById(R.id.delete);	
+        btnSimple5.setOnClickListener(new View.OnClickListener() {
 		
 		public void onClick(View v) {
 			
@@ -147,7 +146,7 @@ public class MainCounter extends Activity {
 
 		}
 			
-       });   
+ });   
          
          
          //Button Summary. Navigates to the Summary Activity to display stats
@@ -163,9 +162,9 @@ public class MainCounter extends Activity {
             intent.putExtra("selected2", sentname );
             startActivity(intent);  
 
-		}
+	   }
 			
-       });   
+  });   
 
 	
 	  //Button edit button. Rename the currently selected Counter, dialogue box pops up for rename
@@ -179,14 +178,12 @@ public class MainCounter extends Activity {
 		LayoutInflater li = LayoutInflater.from(context);
 		View promptsView = li.inflate(R.layout.prompts, null);
 
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-				context);
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
 		// set prompts.xml to alertdialog builder
 		alertDialogBuilder.setView(promptsView);
 
-		final EditText userInput = (EditText) promptsView
-				.findViewById(R.id.editTextDialogUserInput);
+		final EditText userInput = (EditText) promptsView.findViewById(R.id.editTextDialogUserInput);
 
 		// set dialog message
 		alertDialogBuilder
@@ -204,7 +201,6 @@ public class MainCounter extends Activity {
 			    Intent intent = new Intent(MainCounter.this,Main.class);
 		        startActivity(intent);  
 				finish();
-
 			    }
 			  })
 			.setNegativeButton("Cancel",

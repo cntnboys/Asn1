@@ -57,6 +57,7 @@ import com.google.gson.Gson;
 
 public class Main extends Activity {
 
+	//declarted needed variables
 	List<String> noteList = new ArrayList<String>();
 	String selected = null;
 	TextView Intro;
@@ -113,23 +114,21 @@ public class Main extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-				setResult(RESULT_OK);
+			setResult(RESULT_OK);
 				
-				//input text for new counter
-				String text = myEditText.getText().toString().trim();
+			//input text for new counter
+			String text = myEditText.getText().toString().trim();
 				
-				//checking input
-				if(text.equals("")){
-					Toast.makeText(getApplicationContext(), "Please Enter a name",
-							   Toast.LENGTH_LONG).show();
+			//checking input
+			if(text.equals("")){
+				Toast.makeText(getApplicationContext(), "Please Enter a name",Toast.LENGTH_LONG).show();
 					return;
 				}
-				
-				if(noteList.contains(text)){
+			
+			if(noteList.contains(text)){
 					
-					//http://stackoverflow.com/questions/3500197/how-to-display-toast-in-android
-					Toast.makeText(getApplicationContext(), "Counter already exists",
-							   Toast.LENGTH_LONG).show();
+			   //http://stackoverflow.com/questions/3500197/how-to-display-toast-in-android
+				Toast.makeText(getApplicationContext(), "Counter already exists", Toast.LENGTH_LONG).show();
 					return;
 					
 				}
@@ -172,6 +171,8 @@ public class Main extends Activity {
 		 super.onStart();
 		
 		 //Onstart load list of CounterModelObjects from file
+		 //get Context off activity 
+		 //http://stackoverflow.com/questions/8262279/technique-for-get-the-applicationcontext-anywhere
 		 Context context2 = getApplication();
 	     LoadSave ld = new LoadSave();
 	     List2 = ld.loadFromFile(FILENAME2,objList,context2);

@@ -222,5 +222,55 @@ public List<String> hour(Context appcontext, List<Date> datelist2){
 
 }
 
+
+public List<String> minute(Context appcontext, List<Date> datelist2){
+	
+	
+	
+	
+	datelist33 = datelist2;
+	for(int i=0;i<datelist33.size();i++){
+		
+		datecur = datelist33.get(i);
+	
+		strdate = datecur.toString();
+		
+		String[] parts = strdate.split(" ");
+		
+		//month
+		String lastWord = parts[parts.length - 5];
+		
+		//day
+		String lastWord2 = parts[parts.length - 4];
+		
+		//time full
+		String lastWord3 = parts[parts.length - 3];
+		
+		//time hour
+		//stackoverflow.com/questions/1583940/up-to-first-n-characters
+		String cuthour = lastWord3.substring(0, Math.min(lastWord3.length(), 2));
+		
+		//time minute
+		String minute =  lastWord3.substring(0, Math.min(lastWord3.length(), 5));
+		minute = minute.substring(Math.max(minute.length()- 2,0));
+		
+
+		
+		String FinalWord = (lastWord+" "+lastWord2+" "+cuthour+"hr"+" "+minute+"min");
+		list22.add(FinalWord);
+	
+		
+	}
+
+	
+	Set<String> unique = new HashSet<String>(list22);
+	for (String key : unique){
+		listyearfinal.add(key +": " + Collections.frequency(list22, key));
+	}
+	System.out.println("hour"+listyearfinal);
+	return listyearfinal;
+
+}
+
 }
 

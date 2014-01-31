@@ -112,24 +112,31 @@ public class SummaryActivity extends Activity {
 				    DateParse ld7 = new DateParse();
 				    List<String> listhour =ld7.hour(context3, datelist2);
 				    
+				    //min stats
+				    DateParse ld8 = new DateParse();
+				    List<String> listmin =ld8.minute(context3, datelist2);
+				    
 				    
 				    //add lists together for display
 				    List<String> FinalList = new ArrayList<String>();
 				    String year = "---YEAR---";
 				    FinalList.add(year);
 				    FinalList.addAll(listyear);
-				    String month = "---Month---";
+				    String month = "---MONTH---";
 				    FinalList.add(month);
 				    FinalList.addAll(listmonth);
-				    String week = "---Week---";
+				    String week = "---WEEK---";
 				    FinalList.add(week);
 				    FinalList.addAll(listweek);
-				    String day = "---Day---";
+				    String day = "---DAY---";
 				    FinalList.add(day);
 				    FinalList.addAll(listday);
-				    String hour = "---Hour---";
+				    String hour = "---HOUR---";
 				    FinalList.add(hour);
 				    FinalList.addAll(listhour);
+				    String mins = "---MIN---";
+				    FinalList.add(mins);
+				    FinalList.addAll(listmin);
 				    
 				    System.out.println("FInallist"+FinalList);
 				    

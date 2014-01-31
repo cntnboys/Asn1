@@ -43,7 +43,7 @@
        android:layout_alignLeft="@+id/back2"
        android:layout_below="@+id/back2"
        android:layout_marginTop="18dp"
-       android:text="Scroll to see summary statistics (Year,Month,Week,Day,Hour)"
+       android:text="Scroll summary statistics (Year,Month,Week,Day,Hour,Min)"
        android:textSize="10sp" />
 
 </RelativeLayout>
