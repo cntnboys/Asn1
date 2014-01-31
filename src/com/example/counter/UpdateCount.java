@@ -107,7 +107,8 @@ public class UpdateCount {
 		for(int i=0;i<List2.size();i++){
     	
 		//new counter name
-		newname = newname.trim();	
+		newname = newname.trim();
+		newname = newname.replaceAll("\\s", "");
     	CounterModel cam2 = List2.get(i);
     	String strincheck = cam2.getText();
     	
