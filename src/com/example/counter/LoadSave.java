@@ -2,6 +2,7 @@
 The LoadSave class is responsible for loading and saving a list of CounterModel objects 
 into a file using Gson. A list of CounterModel objects can be saved into a file, and retrieved from a file.
 This class contains methods that are called within the Counter Application when any data needs to be retrieved or stored.
+The majority of this code was taken from the LonelyTwitter example from the 301 class.
 
 Copyright 2014 Cameron Alexander
 <Contact: cpalexan@ualberta.ca>
@@ -51,6 +52,7 @@ public class LoadSave {
 
 //Loads CounterModel objects from a file, using Gson, returns a list with CounterModel Objects
 //this method requires a Filename, a List of CounterModel Objects and the context of the activity calling this method
+// This code was taken from Lonely Twitter from the 301 class and modified accordingly 
 public List<CounterModel> loadFromFile(String FILENAME2, List<CounterModel> objList,Context appcontext) {
 		
         try {
@@ -82,6 +84,7 @@ public List<CounterModel> loadFromFile(String FILENAME2, List<CounterModel> objL
 
 // Responsible for saving a Gson , containing list of CounterModel Objects to file
 // this method requires , a List of CounterModel Objects and the context of the activity calling this method
+// This code was taken from the Lonely Twitter from the 301 class
 public void saveInFile(String text, Context appcontext,String FILENAME2) {
         try {
                 FileOutputStream fos = appcontext.openFileOutput(FILENAME2,

@@ -82,7 +82,7 @@ public class Main extends Activity {
 		Yourcounter = (TextView) findViewById(R.id.yourcounters);
 		Yourcounter.setText("Your Counters");
 		
-		// List view element
+		//List view element
 	    myListview = (ListView)findViewById(R.id.counterlist);
 		myEditText = (EditText)findViewById(R.id.countertext);
 	
@@ -106,7 +106,8 @@ public class Main extends Activity {
 
 	     });
 	     
-		
+		//My first button was learned from this online tutorial
+	    //http://www.youtube.com/watch?v=q6-4E1JGT_k
 		//Button plus sign adds a new counter object, creates new CounterModel object
 		Button btnSimple = (Button) findViewById(R.id.summary);
 		btnSimple.setOnClickListener(new View.OnClickListener() {
